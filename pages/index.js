@@ -9,6 +9,7 @@ import TicketNow from "../components/TicketNow";
 import Login from "../components/Login";
 import Loading from "../components/Loading";
 import Loader from "../components/Loader";
+import lotteryABI from "../lottery/lotteryAbi.json";
 import {
   useContract,
   useMetamask,
@@ -30,6 +31,7 @@ import Marquee from "react-fast-marquee";
 const IndexPage = () => {
   const [userTickets, setUserTickets] = useState(0);
   const [quantity, setQuantity] = useState(1);
+  const [lotteryRound, setLotteryRound] = useState("");
 
   const address = useAddress(); // get connected wallet address
   const { contract, isLoading } = useContract(
@@ -40,7 +42,9 @@ const IndexPage = () => {
   console.log(`ticket user can buy ${ticketUserCanBuy}`);
 
   const balance = useBalance();
+  // console.log("balancennnn", balance.data)
   console.log(`here is your balance ${balance.data?.displayValue}`);
+  const shortenBalanceDisplay = balance.data?.displayValue.slice(0, 5);
 
   const { data: remainingTickets } = useContractRead(
     contract,
@@ -80,6 +84,35 @@ const IndexPage = () => {
     "lotteryOperator"
   );
 
+  const { data: lotteryId } = useContractRead(contract, "lotteryId");
+  console.info("this is the lottery id", lotteryId);
+  console.info(contract);
+
+//   const provider = new ethers.providers.Web3Provider(window.ethereum);
+//   const signer = provider.getSigner();
+
+//   const lotteryContract = new ethers.Contract(
+//     "0x7938C3fa703267C513DF63a0CcdC6c2EB41B585C",
+//     lotteryABI,
+//     signer
+//   );
+	// const listenToEvent = () => {
+	// 	try {
+	// 		contract.on("lotteryHistoryTotal", (lotteryId, lastWinner, lastWinnerAmount, timeStamp, event) => {
+	// 			let data = {
+	// 				lotteryId,
+	// 				lastWinner: lastWinner.toString(),
+	// 				lastWinnerAmount: lastWinnerAmount.toString(),
+	// 				timeStamp,
+	// 				event
+	// 			}
+	// 			console.log("eventdata", data)
+	// 		})
+	// 	} catch (error) {
+	// 		console.error(error)
+	// 	}
+	// }
+
   useEffect(() => {
     if (!tickets) return;
 
@@ -91,6 +124,8 @@ const IndexPage = () => {
     );
     // console.log(`bitch ${noOfUserTickets}`);
     setUserTickets(noOfUserTickets);
+    setLotteryRound(lotteryId.toString());
+	 // listenToEvent()
   }, [tickets, address]);
 
   console.log(`user tickets ${userTickets}`);
@@ -142,19 +177,35 @@ const IndexPage = () => {
 
   if (isLoading) return <Loading></Loading>;
   if (!address) return <Login></Login>;
-  
-	return (
-		<Main
-			address={address}
-		>
-			<Hero />
-			<PlaySection />
-			<TicketNow />
-			<FinishedRound />
-			<CriteriaSection />
-			<Footer />
-		</Main>
-	);
-};
+
+  return (
+    <Main address={address}>
+      <Hero />
+      <PlaySection />
+      <TicketNow
+        pricePool={pricePool}
+        balance={balance}
+        shortenBalanceDisplay={shortenBalanceDisplay}
+        quantity={quantity}
+        setQuantity={setQuantity}
+        ticketPrice={ticketPrice}
+        ticketUserCanBuy={ticketUserCanBuy}
+        remainingTickets={remainingTickets}
+        userTickets={userTickets}
+        handleClick={handleClick}
+        expiration={expiration}
+      />
+      <FinishedRound
+        address={address}
+        balance={balance}
+        lotteryRound={lotteryRound}
+        userTickets={userTickets}
+        contract={contract}
+      />
+      <CriteriaSection />
+      <Footer />
+    </Main>
+  );
+};;
 
 export default IndexPage;
