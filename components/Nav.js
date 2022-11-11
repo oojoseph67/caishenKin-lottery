@@ -9,22 +9,23 @@ import {
   useBalance,
   ChainId,
 } from "@thirdweb-dev/react";
-import { shortenAddress } from "../utils/shortenAddress"
+import { shortenAddress } from "../utils/shortenAddress";
+import Link from "next/link";
 
-const Nav = ({ address,balance }) => {
+const Nav = ({ address, balance }) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   const disconnect = useDisconnect();
   const isMismatched = useNetworkMismatch();
   const [, switchNetwork] = useNetwork();
 
-  console.log("navbar address", address)
+  console.log("navbar address", address);
 
-   const nativeTokenDetails = balance.data;
-   const nativeTokenBalance = nativeTokenDetails?.displayValue;
-   const nativeTokenName = nativeTokenDetails?.name;
-   const nativeTokenSymbol = nativeTokenDetails?.symbol;
-   const nativeTokenDecimals = nativeTokenDetails?.decimals;
+  const nativeTokenDetails = balance.data;
+  const nativeTokenBalance = nativeTokenDetails?.displayValue;
+  const nativeTokenName = nativeTokenDetails?.name;
+  const nativeTokenSymbol = nativeTokenDetails?.symbol;
+  const nativeTokenDecimals = nativeTokenDetails?.decimals;
 
   useEffect(() => {
     networkCheck();
@@ -42,19 +43,20 @@ const Nav = ({ address,balance }) => {
       <div className="px-4 py-5 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-24 lg:px-8 ">
         <div className="relative flex items-center justify-between z-50">
           <div className="flex items-center">
-            <a
-              href="/"
-              aria-label="Qroniswap"
-              title="CaishenKin Lottery"
-              className="inline-flex items-center mr-8"
-            >
-              <Image
-                src="/logo/caishenKinBig.png"
-                alt="CaishenKin logo"
-                width={80}
-                height={120}
-              />
-            </a>
+            <Link href="/">
+              <a
+                aria-label="Qroniswap"
+                title="CaishenKin Lottery"
+                className="inline-flex items-center mr-8"
+              >
+                <Image
+                  src="/logo/caishenKinBig.png"
+                  alt="CaishenKin logo"
+                  width={80}
+                  height={120}
+                />
+              </a>
+            </Link>
             {/* <ul className="items-center hidden space-x-8 lg:flex">
               <li>
                 <a
@@ -134,32 +136,33 @@ const Nav = ({ address,balance }) => {
             </li>
             <li>
               {!address ? (
-                <a
-                  href="/"
-                  className="rounded-[8px] [background:linear-gradient(95.08deg,_#9f2dfe,_#3bb2f9)] shadow-[0px_1px_2px_rgba(16,_24,_40,_0.05)] overflow-hidden flex flex-row p-[10px_18px] box-border items-center justify-center cursor-pointer hover:opacity-50"
-                  aria-label="Connect Wallet"
-                  title="Connect Wallet"
-                >
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    viewBox="0 0 48 48"
-                    className="h-10 w-10 text-white"
-                    fill="currentColor"
+                <Link href="/">
+                  <a
+                    className="rounded-[8px] [background:linear-gradient(95.08deg,_#9f2dfe,_#3bb2f9)] shadow-[0px_1px_2px_rgba(16,_24,_40,_0.05)] overflow-hidden flex flex-row p-[10px_18px] box-border items-center justify-center cursor-pointer hover:opacity-50"
+                    aria-label="Connect Wallet"
+                    title="Connect Wallet"
                   >
-                    <path d="M7 40c-.8 0-1.5-.3-2.1-.9-.6-.6-.9-1.3-.9-2.1V11c0-.8.3-1.5.9-2.1C5.5 8.3 6.2 8 7 8h34c.8 0 1.5.3 2.1.9.6.6.9 1.3.9 2.1v26c0 .8-.3 1.5-.9 2.1-.6.6-1.3.9-2.1.9H7Zm0-17.1h34v-6.45H7v6.45Z" />
-                  </svg>
-                  Connect Wallet
-                </a>
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      viewBox="0 0 48 48"
+                      className="h-10 w-10 text-white"
+                      fill="currentColor"
+                    >
+                      <path d="M7 40c-.8 0-1.5-.3-2.1-.9-.6-.6-.9-1.3-.9-2.1V11c0-.8.3-1.5.9-2.1C5.5 8.3 6.2 8 7 8h34c.8 0 1.5.3 2.1.9.6.6.9 1.3.9 2.1v26c0 .8-.3 1.5-.9 2.1-.6.6-1.3.9-2.1.9H7Zm0-17.1h34v-6.45H7v6.45Z" />
+                    </svg>
+                    Connect Wallet
+                  </a>
+                </Link>
               ) : (
-                <a
-                  href="/"
-                  className="rounded-[8px] [background:linear-gradient(95.08deg,_#9f2dfe,_#3bb2f9)] shadow-[0px_1px_2px_rgba(16,_24,_40,_0.05)] overflow-hidden flex flex-row p-[10px_18px] box-border items-center justify-center cursor-pointer hover:opacity-50"
-                  aria-label="Connect Wallet"
-                  title="Connect Wallet"
-                  onClick={disconnect}
-                >
-                  Disconnect
-                  {/* <svg
+                <Link href="/">
+                  <a
+                    className="rounded-[8px] [background:linear-gradient(95.08deg,_#9f2dfe,_#3bb2f9)] shadow-[0px_1px_2px_rgba(16,_24,_40,_0.05)] overflow-hidden flex flex-row p-[10px_18px] box-border items-center justify-center cursor-pointer hover:opacity-50"
+                    aria-label="Connect Wallet"
+                    title="Connect Wallet"
+                    onClick={disconnect}
+                  >
+                    Disconnect
+                    {/* <svg
                     xmlns="http://www.w3.org/2000/svg"
                     viewBox="0 0 48 48"
                     className="h-10 w-10 text-white"
@@ -168,7 +171,8 @@ const Nav = ({ address,balance }) => {
                     <path d="M7 40c-.8 0-1.5-.3-2.1-.9-.6-.6-.9-1.3-.9-2.1V11c0-.8.3-1.5.9-2.1C5.5 8.3 6.2 8 7 8h34c.8 0 1.5.3 2.1.9.6.6.9 1.3.9 2.1v26c0 .8-.3 1.5-.9 2.1-.6.6-1.3.9-2.1.9H7Zm0-17.1h34v-6.45H7v6.45Z" />
                   </svg>
                   {shortenAddress(address)} */}
-                </a>
+                  </a>
+                </Link>
               )}
             </li>
           </ul>
@@ -199,19 +203,20 @@ const Nav = ({ address,balance }) => {
                 <div className="p-5 bg-black rounded shadow-sm">
                   <div className="flex items-center justify-between mb-4">
                     <div>
-                      <a
-                        href="/"
-                        aria-label="Qroniswap"
-                        title="CaishenKin Lottery"
-                        className="inline-flex items-center"
-                      >
-                        <Image
-                          src="/logo/caishenKinBig.png"
-                          alt="CaishenKin logo"
-                          width={80}
-                          height={120}
-                        />
-                      </a>
+                      <Link href="/">
+                        <a
+                          aria-label="Qroniswap"
+                          title="CaishenKin Lottery"
+                          className="inline-flex items-center"
+                        >
+                          <Image
+                            src="/logo/caishenKinBig.png"
+                            alt="CaishenKin logo"
+                            width={80}
+                            height={120}
+                          />
+                        </a>
+                      </Link>
                     </div>
                     <div>
                       <button
@@ -299,33 +304,34 @@ const Nav = ({ address,balance }) => {
                       <li className="mt-4"></li>
                       <li>
                         {!address ? (
-                          <a
-                            href="/"
-                            className="rounded-[8px] [background:linear-gradient(95.08deg,_#9f2dfe,_#3bb2f9)] shadow-[0px_1px_2px_rgba(16,_24,_40,_0.05)] overflow-hidden flex flex-row p-[10px_18px] box-border items-center justify-center cursor-pointer hover:opacity-50"
-                            aria-label="Connect Wallet"
-                            title="Connect Wallet"
-                          >
-                            <svg
-                              xmlns="http://www.w3.org/2000/svg"
-                              viewBox="0 0 48 48"
-                              className="h-10 w-10 text-white"
-                              fill="currentColor"
-                            >
-                              <path d="M7 40c-.8 0-1.5-.3-2.1-.9-.6-.6-.9-1.3-.9-2.1V11c0-.8.3-1.5.9-2.1C5.5 8.3 6.2 8 7 8h34c.8 0 1.5.3 2.1.9.6.6.9 1.3.9 2.1v26c0 .8-.3 1.5-.9 2.1-.6.6-1.3.9-2.1.9H7Zm0-17.1h34v-6.45H7v6.45Z" />
-                            </svg>
-                            Connect Wallet
-                          </a>
-                        ) : (
-                          <>
+                          <Link href="/">
                             <a
-                              href="/"
                               className="rounded-[8px] [background:linear-gradient(95.08deg,_#9f2dfe,_#3bb2f9)] shadow-[0px_1px_2px_rgba(16,_24,_40,_0.05)] overflow-hidden flex flex-row p-[10px_18px] box-border items-center justify-center cursor-pointer hover:opacity-50"
                               aria-label="Connect Wallet"
                               title="Connect Wallet"
-                              onClick={disconnect}
                             >
-                              Disconnect
-                              {/* <svg
+                              <svg
+                                xmlns="http://www.w3.org/2000/svg"
+                                viewBox="0 0 48 48"
+                                className="h-10 w-10 text-white"
+                                fill="currentColor"
+                              >
+                                <path d="M7 40c-.8 0-1.5-.3-2.1-.9-.6-.6-.9-1.3-.9-2.1V11c0-.8.3-1.5.9-2.1C5.5 8.3 6.2 8 7 8h34c.8 0 1.5.3 2.1.9.6.6.9 1.3.9 2.1v26c0 .8-.3 1.5-.9 2.1-.6.6-1.3.9-2.1.9H7Zm0-17.1h34v-6.45H7v6.45Z" />
+                              </svg>
+                              Connect Wallet
+                            </a>
+                          </Link>
+                        ) : (
+                          <>
+                            <Link href="/">
+                              <a
+                                className="rounded-[8px] [background:linear-gradient(95.08deg,_#9f2dfe,_#3bb2f9)] shadow-[0px_1px_2px_rgba(16,_24,_40,_0.05)] overflow-hidden flex flex-row p-[10px_18px] box-border items-center justify-center cursor-pointer hover:opacity-50"
+                                aria-label="Connect Wallet"
+                                title="Connect Wallet"
+                                onClick={disconnect}
+                              >
+                                Disconnect
+                                {/* <svg
                               xmlns="http://www.w3.org/2000/svg"
                               viewBox="0 0 48 48"
                               className="h-10 w-10 text-white"
@@ -334,7 +340,8 @@ const Nav = ({ address,balance }) => {
                               <path d="M7 40c-.8 0-1.5-.3-2.1-.9-.6-.6-.9-1.3-.9-2.1V11c0-.8.3-1.5.9-2.1C5.5 8.3 6.2 8 7 8h34c.8 0 1.5.3 2.1.9.6.6.9 1.3.9 2.1v26c0 .8-.3 1.5-.9 2.1-.6.6-1.3.9-2.1.9H7Zm0-17.1h34v-6.45H7v6.45Z" />
                             </svg>
                             {shortenAddress(address)} */}
-                            </a>
+                              </a>
+                            </Link>
                           </>
                         )}
                       </li>

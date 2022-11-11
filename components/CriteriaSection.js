@@ -11,21 +11,16 @@ const CriteriaSection = () => {
               The digits on your ticket must match in the correct order to win.
             </h4>
             <p className="mb-3">
-              Here&rsquo;s an example lottery draw, with two tickets, A and B.
+              
             </p>
             <p className="mb-3 leading-7">
-              Ticket A: The first 3 digits and the last 2 digits match, but the
-              4th digit is wrong, so this ticket only wins a “Match first 3”
-              prize.
+              
             </p>
             <p className="mb-3 leading-7">
-              Ticket B: Even though the last 5 digits match, the first digit is
-              wrong, so this ticket doesn&rsquo;t win a prize.
+              
             </p>
             <p className="mb-3 leading-7">
-              Prize brackets don&rsquo;t "stack": if you match the first 3
-              digits in order, you&rsquo;ll only win prizes from the "Match 3"
-              bracket, and not from "Match 1" and "Match 2".
+            
             </p>
           </div>
           <div>
