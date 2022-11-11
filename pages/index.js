@@ -181,7 +181,10 @@ const IndexPage = () => {
   return (
     <Main address={address}>
       <Hero />
-      <PlaySection />
+      <PlaySection 
+        balance={balance}
+        ticketPrice={ticketPrice}
+      />
       <TicketNow
         pricePool={pricePool}
         balance={balance}
@@ -206,7 +209,7 @@ const IndexPage = () => {
         lastWinner={lastWinner}
         lastWinnerAmount={lastWinnerAmount}
       />
-      <CriteriaSection />
+      {/* <CriteriaSection /> */}
       <Footer />
     </Main>
   );

@@ -69,7 +69,8 @@ const FinishedRound = ({
         <div className="flex space-x-2 mx-18">
           <h4 className="text-white font-bold">
             {/* Last Winner: {lastWinner?.toString()} */}
-            Last Winner: {shortenAddress(lastWinner)}
+            Last Winner: {lastWinner?.substring(0, 5)}...
+            {lastWinner?.substring(lastWinner.length, lastWinner.length - 5)}
           </h4>
           <h4 className="text-white font-bold">
             Previous Winnings:{" "}

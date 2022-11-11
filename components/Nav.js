@@ -43,13 +43,13 @@ const Nav = ({ address }) => {
               className="inline-flex items-center mr-8"
             >
               <Image
-                src="/logo/qroniswap.png"
-                alt="Qroniswap logo"
-                width={120}
+                src="/logo/caishenKinBig.png"
+                alt="CaishenKin logo"
+                width={80}
                 height={120}
               />
             </a>
-            <ul className="items-center hidden space-x-8 lg:flex">
+            {/* <ul className="items-center hidden space-x-8 lg:flex">
               <li>
                 <a
                   href="#"
@@ -113,7 +113,7 @@ const Nav = ({ address }) => {
                   </span>
                 </a>
               </li>
-            </ul>
+            </ul> */}
           </div>
           <ul className=" items-center hidden space-x-8 lg:flex">
             <li>
@@ -150,9 +150,9 @@ const Nav = ({ address }) => {
                   className="rounded-[8px] [background:linear-gradient(95.08deg,_#9f2dfe,_#3bb2f9)] shadow-[0px_1px_2px_rgba(16,_24,_40,_0.05)] overflow-hidden flex flex-row p-[10px_18px] box-border items-center justify-center cursor-pointer hover:opacity-50"
                   aria-label="Connect Wallet"
                   title="Connect Wallet"
-				  onClick={disconnect}
+                  onClick={disconnect}
                 >
-				Disconnect
+                  Disconnect
                   {/* <svg
                     xmlns="http://www.w3.org/2000/svg"
                     viewBox="0 0 48 48"
@@ -200,9 +200,9 @@ const Nav = ({ address }) => {
                         className="inline-flex items-center"
                       >
                         <Image
-                          src="/logo/qroniswap.png"
-                          alt="Qroniswap logo"
-                          width={120}
+                          src="/logo/caishenKinBig.png"
+                          alt="CaishenKin logo"
+                          width={80}
                           height={120}
                         />
                       </a>
@@ -224,7 +224,7 @@ const Nav = ({ address }) => {
                     </div>
                   </div>
                   <nav>
-                    <ul className="space-y-8">
+                    {/* <ul className="space-y-8">
                       <li>
                         <a
                           href="#"
@@ -288,7 +288,7 @@ const Nav = ({ address }) => {
                           </span>
                         </a>
                       </li>
-                    </ul>
+                    </ul> */}
                     <ul className="space-y-8">
                       <li className="mt-4"></li>
                       <li>

@@ -41,20 +41,20 @@ const TicketNow = ({
             <h2 className="mb-6  text-3xl self-center relative tracking-[-0.02em] leading-[60px] font-semibold inline-block text-white sm:text-4xl md:mx-auto">
               Ticket Sales are CLOSED for this draw
             </h2>
-            <h2 className="mb-6  text-3xl self-stretch relative tracking-[-0.02em] leading-[60px] font-semibold inline-block text-white sm:text-5xl md:mx-auto">
+            {/* <h2 className="mb-6  text-3xl self-stretch relative tracking-[-0.02em] leading-[60px] font-semibold inline-block text-white sm:text-5xl md:mx-auto">
               <span className="[background:linear-gradient(95.08deg,_#9f2dfe,_#3bb2f9)] [-webkit-background-clip:text] [-webkit-text-fill-color:transparent]">
                 {hours}
               </span>{" "}
-              hours{" "}
+              h{" "}
               <span className="[background:linear-gradient(95.08deg,_#9f2dfe,_#3bb2f9)] [-webkit-background-clip:text] [-webkit-text-fill-color:transparent]">
                 {minutes}
               </span>{" "}
-              minutes{" "}
+              m{" "}
               <span className="[background:linear-gradient(95.08deg,_#9f2dfe,_#3bb2f9)] [-webkit-background-clip:text] [-webkit-text-fill-color:transparent]">
                 {seconds}
               </span>{" "}
-              seconds
-            </h2>
+              s
+            </h2> */}
             {/* <p className="relative text-2xl leading-[30px] inline-block">
               Ticket Available: {remainingTickets?.toNumber()}
             </p> */}
@@ -74,15 +74,15 @@ const TicketNow = ({
               <span className="[background:linear-gradient(95.08deg,_#9f2dfe,_#3bb2f9)] [-webkit-background-clip:text] [-webkit-text-fill-color:transparent]">
                 {hours}
               </span>{" "}
-              hours{" "}
+              h{" "}
               <span className="[background:linear-gradient(95.08deg,_#9f2dfe,_#3bb2f9)] [-webkit-background-clip:text] [-webkit-text-fill-color:transparent]">
                 {minutes}
               </span>{" "}
-              minutes{" "}
+              m{" "}
               <span className="[background:linear-gradient(95.08deg,_#9f2dfe,_#3bb2f9)] [-webkit-background-clip:text] [-webkit-text-fill-color:transparent]">
                 {seconds}
               </span>{" "}
-              seconds
+              s
             </h2>
             <p className="relative text-2xl leading-[30px] inline-block">
               Until draw
