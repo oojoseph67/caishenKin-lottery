@@ -4,7 +4,8 @@ import { ethers } from "ethers";
 import lotteryABI from "../lottery/lotteryAbi.json";
 import { ThirdwebSdk } from "@thirdweb-dev/sdk";
 // import { readFileSync } from "fs";
-import {shortenAddress} from "../utils/shortenAddress"
+import { shortenAddress } from "../utils/shortenAddress"
+import Marquee from "react-fast-marquee";
 
 function classNames(...classes) {
   return classes.filter(Boolean).join(" ");
@@ -18,6 +19,8 @@ const FinishedRound = ({
   userTickets,
   winnings,
   onWithdrawWinnings,
+  lastWinner,
+  lastWinnerAmount
 }) => {
   const [data, setData] = useState([]);
 
@@ -52,6 +55,8 @@ const FinishedRound = ({
 
   return (
     <div className="relative px-4 py-5 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-24 lg:px-8 lg:py-20">
+      <br></br>
+      <br></br>
       <div className="max-w-lg sm:mx-auto lg:max-w-2xl">
         <div className="flex flex-col mb-16 text-center sm:mb-0">
           <h2 className="mb-6  text-3xl self-stretch relative tracking-[-0.02em] leading-[60px] font-semibold inline-block text-white sm:text-6xl md:mx-auto">
@@ -59,6 +64,22 @@ const FinishedRound = ({
           </h2>
         </div>
       </div>
+
+      <Marquee className="bg-[#000000] p-5 mb-5" gradient={false} speed={100}>
+        <div className="flex space-x-2 mx-18">
+          <h4 className="text-white font-bold">
+            {/* Last Winner: {lastWinner?.toString()} */}
+            Last Winner: {shortenAddress(lastWinner)}
+          </h4>
+          <h4 className="text-white font-bold">
+            Previous Winnings:{" "}
+            {ethers.utils.formatEther(lastWinnerAmount.toString())}
+            {""}
+            {nativeTokenSymbol}
+          </h4>
+        </div>
+      </Marquee>
+
       <div className="flex flex-col justify-center items-center">
         <div className="w-full max-w-md px-2 py-16 sm:px-0">
           <Tab.Group>

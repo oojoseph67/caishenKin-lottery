@@ -203,6 +203,8 @@ const IndexPage = () => {
         contract={contract}
         winnings={winnings}
         onWithdrawWinnings={onWithdrawWinnings}
+        lastWinner={lastWinner}
+        lastWinnerAmount={lastWinnerAmount}
       />
       <CriteriaSection />
       <Footer />
