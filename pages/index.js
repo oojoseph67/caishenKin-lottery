@@ -185,6 +185,7 @@ const IndexPage = () => {
         expiration={expiration}
         remainingTickets={remainingTickets}
         quantity={quantity}
+        userTickets={userTickets}
       />
       <PlaySection
         balance={balance}

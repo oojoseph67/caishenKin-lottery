@@ -344,15 +344,13 @@ const FinishedRound = ({
                           <br></br>
                           <Link
                             href="/"
-                          >
-                            <a
                               className="rounded-[8px] [background:linear-gradient(95.08deg,_#9f2dfe,_#3bb2f9)] shadow-[0px_1px_2px_rgba(16,_24,_40,_0.05)] overflow-hidden flex flex-row p-[10px_18px] box-border items-center justify-center cursor-pointer hover:opacity-50"
                               aria-label="Withdraw"
                               onClick={onWithdrawWinnings}
                               title="Withdraw"
-                            >
+                          >
                               Withdraw
-                            </a>
+                           
                           </Link>
                         </div>
                       </>

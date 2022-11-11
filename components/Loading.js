@@ -3,16 +3,18 @@ import { PropagateLoader } from "react-spinners";
 
 function Loading() {
   return (
-    <div className="bg-[#091B18]  h-screen flex flex-col items-center justify-center">
-      <div className="flex items-center space-x-2 mb-10">
-        <img className="rounded-full h-20 w-20" src="" alt=""></img>
-        <h1 className="text-lg text-white font-bold">
-          Connecting to 
-        </h1>
-        <h1 className="text-lg text-white font-bold">
-          Loading the CaishenKin Lottery...
-        </h1>
-      </div>
+    <div className="bg-[#091818] min-h-screen flex flex-col items-center justify-center text-center">
+      <img
+        className="rounded-full h-56 w-56 mb-10"
+        src="/logo/caishenKinBig.png"
+        alt="image"
+      ></img>
+      <h1 className="text-6xl text-white font-bold">Connecting..</h1>
+      <br></br>
+      <h2 className="text-4xl text-white">
+        {" "}
+        Loading CaishenKin Lottery...
+      </h2>
       <PropagateLoader color="white"></PropagateLoader>
     </div>
   );

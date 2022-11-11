@@ -8,19 +8,16 @@ const Footer = () => {
       <div className="px-4 py-16 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-24 lg:px-8">
         <div className="flex flex-col sm:flex-row items-start justify-between">
           <div className="md:max-w-md mb-10 sm:mb-0 overflow-hidden flex flex-col items-start justify-start gap-[40px]">
-            <Link href="/">
-              <a
+            <Link 
                 aria-label="Company Logo"
                 title="Company"
-                className="inline-flex items-c enter"
-              >
+                className="inline-flex items-c enter"href="/">
                 <Image
                   src="/logo/caishenKinBig.png"
                   alt="CaishenKin logo"
                   width={120}
                   height={120}
                 />
-              </a>
             </Link>
             <div className="mt-4 lg:max-w-sm">
               <p className="text-base text-gray-100">
@@ -31,12 +28,11 @@ const Footer = () => {
               </p>
             </div>
             <div className="mt-5 inline-flex items-start justify-center">
-              <Link href="https://t.co/ucD4rIgK24">
-                <a
+              <Link href="https://t.co/ucD4rIgK24"
                   target="_blank"
                   rel="noreferrer"
-                  className="w-10 h-10 flex justify-center items-center rounded-full bg-gray-600 hover:bg-gray-700 mr-5"
-                >
+                  className="w-10 h-10 flex justify-center items-center rounded-full bg-gray-600 hover:bg-gray-700 mr-5">
+               
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     viewBox="0 0 17 17"
@@ -47,14 +43,13 @@ const Footer = () => {
                       d="M8.5 1.063a7.438 7.438 0 1 0 .001 14.876A7.438 7.438 0 0 0 8.5 1.062Zm2.29 10.975s-.185.464-.697.241l-1.896-1.453-1.164-.912.005-.042s3.4-3.057 3.54-3.186l.093-.158c.008-.158-.252 0-.252 0L5.914 9.389l-1.877-.632s-.288-.102-.316-.325c-.027-.223.325-.343.325-.343l7.46-2.926s.613-.269.613.177l-1.33 6.698Z"
                     />
                   </svg>
-                </a>
+                
               </Link>
-              <Link href="https://twitter.com/CaishkinFinance">
-                <a
+              <Link href="https://twitter.com/CaishkinFinance"
                   target="_blank"
                   rel="noreferrer"
-                  className="w-10 h-10 flex justify-center items-center rounded-full bg-gray-600 hover:bg-gray-700 mr-5"
-                >
+                  className="w-10 h-10 flex justify-center items-center rounded-full bg-gray-600 hover:bg-gray-700 mr-5">
+             
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     fill="none"
@@ -75,7 +70,7 @@ const Footer = () => {
                       clip-rule="evenodd"
                     />
                   </svg>
-                </a>
+                
               </Link>
             </div>
           </div>

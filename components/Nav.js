@@ -43,19 +43,18 @@ const Nav = ({ address, balance }) => {
       <div className="px-4 py-5 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-24 lg:px-8 ">
         <div className="relative flex items-center justify-between z-50">
           <div className="flex items-center">
-            <Link href="/">
-              <a
+            <Link href="/"
                 aria-label="Qroniswap"
                 title="CaishenKin Lottery"
-                className="inline-flex items-center mr-8"
-              >
+                className="inline-flex items-center mr-8">
+             
                 <Image
                   src="/logo/caishenKinBig.png"
                   alt="CaishenKin logo"
                   width={80}
                   height={120}
                 />
-              </a>
+              
             </Link>
             {/* <ul className="items-center hidden space-x-8 lg:flex">
               <li>
@@ -136,12 +135,11 @@ const Nav = ({ address, balance }) => {
             </li>
             <li>
               {!address ? (
-                <Link href="/">
-                  <a
+                <Link href="/"
                     className="rounded-[8px] [background:linear-gradient(95.08deg,_#9f2dfe,_#3bb2f9)] shadow-[0px_1px_2px_rgba(16,_24,_40,_0.05)] overflow-hidden flex flex-row p-[10px_18px] box-border items-center justify-center cursor-pointer hover:opacity-50"
                     aria-label="Connect Wallet"
-                    title="Connect Wallet"
-                  >
+                    title="Connect Wallet">
+                
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
                       viewBox="0 0 48 48"
@@ -151,16 +149,15 @@ const Nav = ({ address, balance }) => {
                       <path d="M7 40c-.8 0-1.5-.3-2.1-.9-.6-.6-.9-1.3-.9-2.1V11c0-.8.3-1.5.9-2.1C5.5 8.3 6.2 8 7 8h34c.8 0 1.5.3 2.1.9.6.6.9 1.3.9 2.1v26c0 .8-.3 1.5-.9 2.1-.6.6-1.3.9-2.1.9H7Zm0-17.1h34v-6.45H7v6.45Z" />
                     </svg>
                     Connect Wallet
-                  </a>
+                 
                 </Link>
               ) : (
-                <Link href="/">
-                  <a
+                <Link href="/"
                     className="rounded-[8px] [background:linear-gradient(95.08deg,_#9f2dfe,_#3bb2f9)] shadow-[0px_1px_2px_rgba(16,_24,_40,_0.05)] overflow-hidden flex flex-row p-[10px_18px] box-border items-center justify-center cursor-pointer hover:opacity-50"
                     aria-label="Connect Wallet"
                     title="Connect Wallet"
-                    onClick={disconnect}
-                  >
+                    onClick={disconnect}>
+                 
                     Disconnect
                     {/* <svg
                     xmlns="http://www.w3.org/2000/svg"
@@ -171,7 +168,7 @@ const Nav = ({ address, balance }) => {
                     <path d="M7 40c-.8 0-1.5-.3-2.1-.9-.6-.6-.9-1.3-.9-2.1V11c0-.8.3-1.5.9-2.1C5.5 8.3 6.2 8 7 8h34c.8 0 1.5.3 2.1.9.6.6.9 1.3.9 2.1v26c0 .8-.3 1.5-.9 2.1-.6.6-1.3.9-2.1.9H7Zm0-17.1h34v-6.45H7v6.45Z" />
                   </svg>
                   {shortenAddress(address)} */}
-                  </a>
+                  
                 </Link>
               )}
             </li>
@@ -203,19 +200,18 @@ const Nav = ({ address, balance }) => {
                 <div className="p-5 bg-black rounded shadow-sm">
                   <div className="flex items-center justify-between mb-4">
                     <div>
-                      <Link href="/">
-                        <a
+                      <Link href="/"
                           aria-label="Qroniswap"
                           title="CaishenKin Lottery"
-                          className="inline-flex items-center"
-                        >
+                          className="inline-flex items-center">
+                       
                           <Image
                             src="/logo/caishenKinBig.png"
                             alt="CaishenKin logo"
                             width={80}
                             height={120}
                           />
-                        </a>
+                      
                       </Link>
                     </div>
                     <div>
@@ -304,12 +300,11 @@ const Nav = ({ address, balance }) => {
                       <li className="mt-4"></li>
                       <li>
                         {!address ? (
-                          <Link href="/">
-                            <a
+                          <Link href="/"
                               className="rounded-[8px] [background:linear-gradient(95.08deg,_#9f2dfe,_#3bb2f9)] shadow-[0px_1px_2px_rgba(16,_24,_40,_0.05)] overflow-hidden flex flex-row p-[10px_18px] box-border items-center justify-center cursor-pointer hover:opacity-50"
                               aria-label="Connect Wallet"
-                              title="Connect Wallet"
-                            >
+                              title="Connect Wallet">
+                           
                               <svg
                                 xmlns="http://www.w3.org/2000/svg"
                                 viewBox="0 0 48 48"
@@ -319,17 +314,16 @@ const Nav = ({ address, balance }) => {
                                 <path d="M7 40c-.8 0-1.5-.3-2.1-.9-.6-.6-.9-1.3-.9-2.1V11c0-.8.3-1.5.9-2.1C5.5 8.3 6.2 8 7 8h34c.8 0 1.5.3 2.1.9.6.6.9 1.3.9 2.1v26c0 .8-.3 1.5-.9 2.1-.6.6-1.3.9-2.1.9H7Zm0-17.1h34v-6.45H7v6.45Z" />
                               </svg>
                               Connect Wallet
-                            </a>
+                           
                           </Link>
                         ) : (
                           <>
-                            <Link href="/">
-                              <a
+                            <Link href="/"
                                 className="rounded-[8px] [background:linear-gradient(95.08deg,_#9f2dfe,_#3bb2f9)] shadow-[0px_1px_2px_rgba(16,_24,_40,_0.05)] overflow-hidden flex flex-row p-[10px_18px] box-border items-center justify-center cursor-pointer hover:opacity-50"
                                 aria-label="Connect Wallet"
                                 title="Connect Wallet"
-                                onClick={disconnect}
-                              >
+                                onClick={disconnect}>
+                             
                                 Disconnect
                                 {/* <svg
                               xmlns="http://www.w3.org/2000/svg"
@@ -340,7 +334,7 @@ const Nav = ({ address, balance }) => {
                               <path d="M7 40c-.8 0-1.5-.3-2.1-.9-.6-.6-.9-1.3-.9-2.1V11c0-.8.3-1.5.9-2.1C5.5 8.3 6.2 8 7 8h34c.8 0 1.5.3 2.1.9.6.6.9 1.3.9 2.1v26c0 .8-.3 1.5-.9 2.1-.6.6-1.3.9-2.1.9H7Zm0-17.1h34v-6.45H7v6.45Z" />
                             </svg>
                             {shortenAddress(address)} */}
-                              </a>
+                             
                             </Link>
                           </>
                         )}
