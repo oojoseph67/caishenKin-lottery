@@ -179,12 +179,17 @@ const IndexPage = () => {
   if (!address) return <Login></Login>;
 
   return (
-    <Main address={address}>
-      <Hero />
-      <PlaySection 
+    <Main address={address} balance={balance}>
+      <Hero 
+        handleClick={handleClick}
+        expiration={expiration}
+        remainingTickets={remainingTickets}
+        quantity={quantity}
+      />
+      <PlaySection
         balance={balance}
         ticketPrice={ticketPrice}
-      />
+        />
       <TicketNow
         pricePool={pricePool}
         balance={balance}

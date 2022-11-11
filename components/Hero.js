@@ -2,8 +2,14 @@ import React from "react";
 import Image from "next/image";
 import { ethers } from "ethers";
 
-const Hero = ({pricePool, }) => {
-	return (
+const Hero = ({
+  pricePool,
+  handleClick,
+  remainingTickets,
+  expiration,
+  quantity,
+}) => {
+  return (
     <div className="relative px-4 py-16 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-24 lg:px-8 lg:py-20">
       <div className="max-w-xl sm:mx-auto lg:max-w-2xl">
         <div className="flex flex-col mb-16 sm:text-center sm:mb-0">
@@ -12,9 +18,9 @@ const Hero = ({pricePool, }) => {
               CaishenKin Lottery
             </h2>
             <div className="relative text-2xl leading-[30px] inline-block w-[768px]">
-              Win Up To 
+              Win Up To
             </div>
-			<br></br>
+            <br></br>
             <div className="self-stretch relative tracking-[-0.02em] text-5xl leading-[55px] font-semibold [background:linear-gradient(95.08deg,_#9f2dfe,_#3bb2f9)] [-webkit-background-clip:text] [-webkit-text-fill-color:transparent] mb-5 block">
               $100,000
             </div>
@@ -49,7 +55,15 @@ const Hero = ({pricePool, }) => {
                     </linearGradient>
                   </defs>
                 </svg>
-                <button className="absolute left-[25px] group inline-flex items-center justify-center overflow-hidden text-sm border border-primary rounded-3xl">
+                <button
+                  onClick={handleClick}
+                  disabled={
+                    expiration?.toString() < Date.now().toString() ||
+                    remainingTickets?.toNumber() == 0 ||
+                    userTickets == 10
+                  }
+                  className="disabled:text-gray-100 disabled:from-gray-600 disabled:to-gray-100 disabled:cursor-not-allowed absolute left-[25px] group inline-flex items-center justify-center overflow-hidden text-sm border border-primary rounded-3xl"
+                >
                   <span className="px-10 py-1.5 group-hover:[background:linear-gradient(95.08deg,_#9f2dfe,_#3bb2f9)] transition-all ease-in duration-75  rounded-md">
                     Buy Tickets
                   </span>
