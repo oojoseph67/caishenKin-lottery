@@ -10,7 +10,7 @@ function Loading() {
           Connecting to 
         </h1>
         <h1 className="text-lg text-white font-bold">
-          Loading the T00B11ASS Lottery...
+          Loading the CaishenKin Lottery...
         </h1>
       </div>
       <PropagateLoader color="white"></PropagateLoader>

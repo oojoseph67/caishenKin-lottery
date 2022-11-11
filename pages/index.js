@@ -88,30 +88,30 @@ const IndexPage = () => {
   console.info("this is the lottery id", lotteryId);
   console.info(contract);
 
-//   const provider = new ethers.providers.Web3Provider(window.ethereum);
-//   const signer = provider.getSigner();
+  //   const provider = new ethers.providers.Web3Provider(window.ethereum);
+  //   const signer = provider.getSigner();
 
-//   const lotteryContract = new ethers.Contract(
-//     "0x7938C3fa703267C513DF63a0CcdC6c2EB41B585C",
-//     lotteryABI,
-//     signer
-//   );
-	// const listenToEvent = () => {
-	// 	try {
-	// 		contract.on("lotteryHistoryTotal", (lotteryId, lastWinner, lastWinnerAmount, timeStamp, event) => {
-	// 			let data = {
-	// 				lotteryId,
-	// 				lastWinner: lastWinner.toString(),
-	// 				lastWinnerAmount: lastWinnerAmount.toString(),
-	// 				timeStamp,
-	// 				event
-	// 			}
-	// 			console.log("eventdata", data)
-	// 		})
-	// 	} catch (error) {
-	// 		console.error(error)
-	// 	}
-	// }
+  //   const lotteryContract = new ethers.Contract(
+  //     "0x7938C3fa703267C513DF63a0CcdC6c2EB41B585C",
+  //     lotteryABI,
+  //     signer
+  //   );
+  // const listenToEvent = () => {
+  // 	try {
+  // 		contract.on("lotteryHistoryTotal", (lotteryId, lastWinner, lastWinnerAmount, timeStamp, event) => {
+  // 			let data = {
+  // 				lotteryId,
+  // 				lastWinner: lastWinner.toString(),
+  // 				lastWinnerAmount: lastWinnerAmount.toString(),
+  // 				timeStamp,
+  // 				event
+  // 			}
+  // 			console.log("eventdata", data)
+  // 		})
+  // 	} catch (error) {
+  // 		console.error(error)
+  // 	}
+  // }
 
   useEffect(() => {
     if (!tickets) return;
@@ -125,7 +125,7 @@ const IndexPage = () => {
     // console.log(`bitch ${noOfUserTickets}`);
     setUserTickets(noOfUserTickets);
     setLotteryRound(lotteryId.toString());
-	 // listenToEvent()
+    // listenToEvent()
   }, [tickets, address]);
 
   console.log(`user tickets ${userTickets}`);
@@ -201,11 +201,13 @@ const IndexPage = () => {
         lotteryRound={lotteryRound}
         userTickets={userTickets}
         contract={contract}
+        winnings={winnings}
+        onWithdrawWinnings={onWithdrawWinnings}
       />
       <CriteriaSection />
       <Footer />
     </Main>
   );
-};;
+};
 
 export default IndexPage;

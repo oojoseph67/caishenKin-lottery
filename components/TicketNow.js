@@ -158,7 +158,7 @@ const TicketNow = ({
                   className="bg-[#091B1B] px-10 py-1.5 group-hover:[background:linear-gradient(95.08deg,_#9f2dfe,_#3bb2f9)] transition-all ease-in duration-75 rounded-md text-white"
                   type="number"
                   min={1}
-                  max={10}
+                  max={ticketUserCanBuy}
                   value={quantity}
                   onChange={(e) => setQuantity(Number(e.target.value))}
                 ></input>

@@ -1,39 +1,54 @@
 import React, { useState, useEffect } from "react";
-import { useContract } from "@thirdweb-dev/react";
 import { Tab } from "@headlessui/react";
 import { ethers } from "ethers";
 import lotteryABI from "../lottery/lotteryAbi.json";
 import { ThirdwebSdk } from "@thirdweb-dev/sdk";
 // import { readFileSync } from "fs";
+import {shortenAddress} from "../utils/shortenAddress"
 
 function classNames(...classes) {
   return classes.filter(Boolean).join(" ");
 }
 
 const FinishedRound = ({
-  contract,
+  // contract,
   address,
   balance,
   lotteryRound,
   userTickets,
+  winnings,
+  onWithdrawWinnings,
 }) => {
   const [data, setData] = useState([]);
 
-  // const provider = new ethers.providers.Web3Provider(window.ethereum);
-  // const signer = provider.getSigner();
+  const nativeTokenDetails = balance.data;
+  const nativeTokenBalance = nativeTokenDetails?.displayValue;
+  const nativeTokenName = nativeTokenDetails?.name;
+  const nativeTokenSymbol = nativeTokenDetails?.symbol;
+  const nativeTokenDecimals = nativeTokenDetails?.decimals;
+  // console.log("nativeTokenDetails", nativeTokenDetails);
 
-  // const lotteryContract = new ethers.Contract(
-  //   "0x7938C3fa703267C513DF63a0CcdC6c2EB41B585C",
-  //   lotteryABI,
-  //   signer
-  // );
-  // console.log("lotteryContract", lotteryContract);
+  const provider = new ethers.providers.Web3Provider(window.ethereum);
+  const signer = provider.getSigner();
 
- contract.events.addEventListener("lotteryHistoryTotal", (event) => {
-   console.log("event", event);
- });
+  const lotteryContract = new ethers.Contract(
+    // "0x223bcd7CBE4BC5b98d2038DC01dB79A3D8b1E2B9",
+    process.env.NEXT_PUBLIC_LOTTERY_CONTRACT_ADDRESS,
+    lotteryABI,
+    signer
+  );
+  console.log("lotteryContract", lotteryContract);
 
-  useEffect(() => {}, [balance, address]);
+  console.log("data", data);
+
+  useEffect(() => {
+    async function getData() {
+      const tx = await lotteryContract.filters.lotteryHistoryTotal();
+      const txData = await lotteryContract.queryFilter(tx);
+      setData(txData);
+    }
+    getData();
+  }, [balance, address]);
 
   return (
     <div className="relative px-4 py-5 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-24 lg:px-8 lg:py-20">
@@ -92,7 +107,7 @@ const FinishedRound = ({
             <Tab.Panels className="mt-2 w-full flex flex-col justify-center items-center">
               <Tab.Panel
                 className={classNames(
-                  "relative rounded-[24px] [background:linear-gradient(139.38deg,_rgba(65,_70,_83,_0.4),_rgba(56,_61,_74,_0.1))] shadow-[0px_4px_24px_-1px_rgba(21,_24,_32,_0.2)] [backdrop-filter:blur(40px)] w-full sm:w-[750px] h-[300px] flex flex-col p-[40px_32px] box-border items-start justify-start gap-[40px] text-left"
+                  "relative rounded-[24px] [background:linear-gradient(139.38deg,_rgba(65,_70,_83,_0.4),_rgba(56,_61,_74,_0.1))] shadow-[0px_4px_24px_-1px_rgba(21,_24,_32,_0.2)] [backdrop-filter:blur(40px)] w-full sm:w-[500px] h-[300px] flex flex-col p-[40px_32px] box-border items-start justify-start gap-[40px] text-left"
                 )}
               >
                 <div className="w-full border-b border-gray-100  pb-4">
@@ -148,7 +163,7 @@ const FinishedRound = ({
               </Tab.Panel>
               <Tab.Panel
                 className={classNames(
-                  "relative rounded-[24px] [background:linear-gradient(139.38deg,_rgba(65,_70,_83,_0.4),_rgba(56,_61,_74,_0.1))] shadow-[0px_4px_24px_-1px_rgba(21,_24,_32,_0.2)] [backdrop-filter:blur(40px)] w-full sm:w-[750px] h-[528px] flex flex-col p-[40px_32px] box-border items-start justify-start gap-[40px] text-left"
+                  "relative rounded-[24px] [background:linear-gradient(139.38deg,_rgba(65,_70,_83,_0.4),_rgba(56,_61,_74,_0.1))] shadow-[0px_4px_24px_-1px_rgba(21,_24,_32,_0.2)] [backdrop-filter:blur(40px)] w-full sm:w-[750px] h-[450px] flex flex-col p-[40px_32px] box-border items-start justify-start gap-[40px] text-left"
                 )}
               >
                 <div className="w-full border-b border-gray-100  pb-4">
@@ -240,64 +255,49 @@ const FinishedRound = ({
                     </div>
                   </div>
                   <div className="mt-3 text-sm sm:text-base font-normal">
-                    Drawn Nov 8, 2022, 3:00pm
+                    Last draw Nov 8, 2022, 3:00pm
                   </div>
                 </div>
                 <div className="my-5">
                   <div className="flex flex-col sm:flex-row flex-wrap  justify-center  items-center sm:justify-start">
-                    <div className="mb-5 sm:mr-5 font-bold text-2xl">
-                      Ticket Number
-                    </div>
-                    <div>
-                      <span className="rounded-full [background:linear-gradient(95.08deg,_#9f2dfe,_#3bb2f9)] px-3 py-2 sm:py-3 sm:px-4  sm:text-lg text-sm font-semibold text-white w-[25px] sm:w-[48px] h-[25px] sm:h-[48px] mr-3">
-                        9
-                      </span>
-                    </div>
-                  </div>
-                </div>
-                <div className="w-full flex justify-between ">
-                  <div className="w-full sm:w-[250px] items-start">
-                    <h3 className="text-xl font-semibold leading-5 ">Gold</h3>
-                    <h4 className="text-base sm:text-xl my-3 font-semibold  [background:linear-gradient(95.08deg,_#9f2dfe,_#3bb2f9)] [-webkit-background-clip:text] [-webkit-text-fill-color:transparent] ">
-                      0.070 BNB
-                    </h4>
-                    <p className="text-lg font-semibold">$20</p>
-                  </div>
-                  <div className="w-full sm:w-[250px] items-start">
-                    <h3 className="text-xl font-semibold leading-5 ">Silver</h3>
-                    <h4 className="text-base sm:text-xl my-3 font-semibold  [background:linear-gradient(95.08deg,_#9f2dfe,_#3bb2f9)] [-webkit-background-clip:text] [-webkit-text-fill-color:transparent] ">
-                      0.035 BNB
-                    </h4>
-                    <p className="text-lg font-semibold">$10</p>
-                  </div>
-                  <div className="w-full sm:w-[250px] items-start">
-                    <h3 className="text-xl font-semibold leading-5 ">Bronze</h3>
-                    <h4 className="text-base sm:text-xl my-3 font-semibold  [background:linear-gradient(95.08deg,_#9f2dfe,_#3bb2f9)] [-webkit-background-clip:text] [-webkit-text-fill-color:transparent] ">
-                      0.018 BNB
-                    </h4>
-                    <p className="text-lg font-semibold">$5</p>
-                  </div>
-                </div>
-                <div className="w-full flex justify-center items-center">
-                  <div className="inline-flex ">
-                    <span className="text-xl font-medium mr-3">Hide</span>
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      viewBox="0 0 24 24"
-                      width="24"
-                      height="24"
-                      className="h-8 w-8 text-gray-100"
-                      fill="currentColor"
-                    >
-                      <path fill="none" d="M0 0h24v24H0z" />
-                      <path d="M12 10.828l-4.95 4.95-1.414-1.414L12 8l6.364 6.364-1.414 1.414z" />
-                    </svg>
+                    <table>
+                      <thead>
+                        <tr>
+                          <th> Round </th>
+                          <th> Winner </th>
+                          <th> Prize </th>
+                          <th> Time </th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        {data.map((e) => {
+                          return (
+                            <tr key={e.args.lotteryId.toString()}>
+                              <td>{e.args.lotteryId.toString()}</td>
+                              <td>{shortenAddress(e.args.lastWinner)}</td>
+                              <td>
+                                {ethers.utils.formatEther(
+                                  e.args.lastWinnerAmount.toString()
+                                )}
+                                {""}
+                                {nativeTokenSymbol}
+                              </td>
+                              <td>
+                                {new Date(
+                                  e.args.timeStamp.toNumber() * 1000
+                                ).toLocaleString()}
+                              </td>
+                            </tr>
+                          );
+                        })}
+                      </tbody>
+                    </table>
                   </div>
                 </div>
               </Tab.Panel>
               <Tab.Panel
                 className={classNames(
-                  "relative rounded-[24px] [background:linear-gradient(139.38deg,_rgba(65,_70,_83,_0.4),_rgba(56,_61,_74,_0.1))] shadow-[0px_4px_24px_-1px_rgba(21,_24,_32,_0.2)] [backdrop-filter:blur(40px)] w-full sm:w-[750px] h-[528px] flex flex-col p-[40px_32px] box-border items-start justify-start gap-[40px] text-left"
+                  "relative rounded-[24px] [background:linear-gradient(139.38deg,_rgba(65,_70,_83,_0.4),_rgba(56,_61,_74,_0.1))] shadow-[0px_4px_24px_-1px_rgba(21,_24,_32,_0.2)] [backdrop-filter:blur(40px)] w-full sm:w-[500px] h-[320px] flex flex-col p-[40px_32px] box-border items-start justify-start gap-[40px] text-left"
                 )}
               >
                 <div className="w-full flex flex-col justify-center items-center text-center pb-4">
@@ -305,7 +305,35 @@ const FinishedRound = ({
                     Recent Transactions
                   </h2>
                   <div className="my-10">
-                    <p>No recent transactions</p>
+                    {winnings > 0 ? (
+                      <>
+                        <div className="max-w-md md:max-w-2xl lg:max-w-4xl mx-auto mt-5">
+                          <p className="font-bold">
+                            Winner Winner Chicken Dinner!
+                          </p>
+                          <p>
+                            Total Winnings:{" "}
+                            <p>
+                              {ethers.utils.formatEther(winnings.toString())}{" "}
+                              {nativeTokenSymbol}
+                            </p>
+                          </p>
+                          <br></br>
+                          <a
+                            href="/"
+                            className="rounded-[8px] [background:linear-gradient(95.08deg,_#9f2dfe,_#3bb2f9)] shadow-[0px_1px_2px_rgba(16,_24,_40,_0.05)] overflow-hidden flex flex-row p-[10px_18px] box-border items-center justify-center cursor-pointer hover:opacity-50"
+                            aria-label="Withdraw"
+                            onClick={onWithdrawWinnings}
+                            title="Withdraw"
+                          >
+                            Withdraw
+                          </a>
+                        </div>
+                      </>
+                    ) : (
+                      <>No winnings yet but don`t give up keep playing</>
+                    )}
+                    {/* <p>No recent transactions</p> */}
                   </div>
                 </div>
               </Tab.Panel>
@@ -315,6 +343,6 @@ const FinishedRound = ({
       </div>
     </div>
   );
-};
+};;
 
 export default FinishedRound;
