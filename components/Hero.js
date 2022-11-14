@@ -1,6 +1,13 @@
 import React from "react";
 import Image from "next/image";
 import { ethers } from "ethers";
+import {
+  useAddress,
+  useMetamask,
+  ConnectWallet,
+  useContract,
+} from "@thirdweb-dev/react";
+import { useState, useEffect } from "react";
 
 const Hero = ({
   pricePool,

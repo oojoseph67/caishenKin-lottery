@@ -1,4 +1,4 @@
-import { useAddress, useMetamask } from "@thirdweb-dev/react";
+import { useAddress, useMetamask, ConnectWallet } from "@thirdweb-dev/react";
 
 function Login() {
   const connectWithMetamask = useMetamask(); // use metamask connector automatically
@@ -13,16 +13,24 @@ function Login() {
       <br></br>
       <h2 className="text-white">
         {" "}
-        Get Started By Logging in with your Metamask{" "}
+        Get Started By Logging in with your wallet{" "}
       </h2>
-
-      <button
+      <br></br>
+      <br></br>
+      {/* <button
         onClick={connectWithMetamask}
         className="bg-white px-8 py-5 mt-10 rounded-lg shadow-lg font-bold"
       >
         Login with Metamask
-      </button>
-      {/* <ConnectWallet></ConnectWallet> */}
+      </button> */}
+      <ConnectWallet
+        auth={{
+          loginOptional: false,
+        }}
+        colorMode="light"
+        accentColor="#ffffff"
+      />
+      ;{/* <ConnectWallet></ConnectWallet> */}
     </div>
   );
 }

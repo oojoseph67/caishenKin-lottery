@@ -9,7 +9,9 @@ import TicketNow from "../components/TicketNow";
 import Login from "../components/Login";
 import Loading from "../components/Loading";
 import Loader from "../components/Loader";
+import NotEnoughToken from "../components/NotEnoughToken"
 import lotteryABI from "../lottery/lotteryAbi.json";
+import tokenABI from "../lottery/tokenABI.json"
 import {
   useContract,
   useMetamask,
@@ -20,6 +22,9 @@ import {
   useContractRead,
   useContractWrite,
   useBalance,
+  ConnectWallet,
+  useTokenBalance,
+  useToken,
 } from "@thirdweb-dev/react";
 import { useState, useEffect } from "react";
 import { ethers } from "ethers";
@@ -37,6 +42,24 @@ const IndexPage = () => {
   const { contract, isLoading } = useContract(
     process.env.NEXT_PUBLIC_LOTTERY_CONTRACT_ADDRESS
   );
+
+  console.log("this is a contract", contract)
+
+  // const { tokenContract, isLoading } = useContract(ADDRESS, CONTRACT_ABI);
+
+  const {contract: tokenContract} = useContract(
+    "0x95ac4ffA46C25dBCe18C53F5EdAf088b53c160D1",
+    tokenABI
+  );
+  console.log("tokenNNN", tokenContract);
+
+  const { data: tokenDetails } = useTokenBalance(tokenContract, address);
+  console.log("token balance", tokenDetails);
+
+  const tokenBalanceBal = tokenDetails?.displayValue
+  const tokenSymbol = tokenDetails?.symbol
+  const tokenName = tokenDetails?.name
+  // console.log("token balance bal", tokenBalanceBal);
 
   const ticketUserCanBuy = 10 - userTickets;
   console.log(`ticket user can buy ${ticketUserCanBuy}`);
@@ -177,6 +200,11 @@ const IndexPage = () => {
 
   if (isLoading) return <Loading></Loading>;
   if (!address) return <Login></Login>;
+  if (tokenBalanceBal < 100000) return <NotEnoughToken
+    tokenBalanceBal={tokenBalanceBal}
+    tokenSymbol={tokenSymbol}
+    tokenName={tokenName}
+  ></NotEnoughToken>
 
   return (
     <Main address={address} balance={balance}>

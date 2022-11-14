@@ -33,7 +33,7 @@ const Nav = ({ address, balance }) => {
 
   async function networkCheck() {
     if (isMismatched) {
-      const { chainId } = await switchNetwork(ChainId.Goerli);
+      const { chainId } = await switchNetwork(ChainId.BinanceSmartChainMainnet);
       console.log("navbar chainId", chainId);
     }
   }

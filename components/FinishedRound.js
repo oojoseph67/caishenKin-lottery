@@ -199,7 +199,7 @@ const FinishedRound = ({
                         {lotteryRound}
                       </span>
                     </div>
-                    <div className="items-end">
+                    {/* <div className="items-end">
                       <nav aria-label="Page navigation example">
                         <ul className="inline-flex text-sm -space-x-px">
                           <li>
@@ -275,7 +275,7 @@ const FinishedRound = ({
                           </li>
                         </ul>
                       </nav>
-                    </div>
+                    </div> */}
                   </div>
                   <div className="mt-3 text-sm sm:text-base font-normal">
                     Last draw Nov 8, 2022, 3:00pm
@@ -283,29 +283,29 @@ const FinishedRound = ({
                 </div>
                 <div className="my-5">
                   <div className="flex flex-col sm:flex-row flex-wrap  justify-center  items-center sm:justify-start">
-                    <table>
+                    <table className="shadow-lg border-collapse">
                       <thead>
                         <tr>
-                          <th> Round </th>
-                          <th> Winner </th>
-                          <th> Prize </th>
-                          <th> Time </th>
+                          <th class="bg-blue-100 border text-left px-8 py-4"> Round </th>
+                          <th class="bg-blue-100 border text-left px-8 py-4"> Winner </th>
+                          <th class="bg-blue-100 border text-left px-8 py-4"> Prize </th>
+                          <th class="bg-blue-100 border text-left px-8 py-4"> Time </th>
                         </tr>
                       </thead>
                       <tbody>
                         {data.map((e) => {
                           return (
                             <tr key={e.args.lotteryId.toString()}>
-                              <td>{e.args.lotteryId.toString()}</td>
-                              <td>{shortenAddress(e.args.lastWinner)}</td>
-                              <td>
+                              <td class="border px-8 py-4">{e.args.lotteryId.toString()}</td>
+                              <td class="border px-8 py-4">{shortenAddress(e.args.lastWinner)}</td>
+                              <td class="border px-8 py-4">
                                 {ethers.utils.formatEther(
                                   e.args.lastWinnerAmount.toString()
                                 )}
                                 {""}
                                 {nativeTokenSymbol}
                               </td>
-                              <td>
+                              <td class="border px-8 py-4">
                                 {new Date(
                                   e.args.timeStamp.toNumber() * 1000
                                 ).toLocaleString()}
@@ -344,13 +344,12 @@ const FinishedRound = ({
                           <br></br>
                           <Link
                             href="/"
-                              className="rounded-[8px] [background:linear-gradient(95.08deg,_#9f2dfe,_#3bb2f9)] shadow-[0px_1px_2px_rgba(16,_24,_40,_0.05)] overflow-hidden flex flex-row p-[10px_18px] box-border items-center justify-center cursor-pointer hover:opacity-50"
-                              aria-label="Withdraw"
-                              onClick={onWithdrawWinnings}
-                              title="Withdraw"
+                            className="rounded-[8px] [background:linear-gradient(95.08deg,_#9f2dfe,_#3bb2f9)] shadow-[0px_1px_2px_rgba(16,_24,_40,_0.05)] overflow-hidden flex flex-row p-[10px_18px] box-border items-center justify-center cursor-pointer hover:opacity-50"
+                            aria-label="Withdraw"
+                            onClick={onWithdrawWinnings}
+                            title="Withdraw"
                           >
-                              Withdraw
-                           
+                            Withdraw
                           </Link>
                         </div>
                       </>
