@@ -200,11 +200,11 @@ const IndexPage = () => {
 
   if (isLoading) return <Loading></Loading>;
   if (!address) return <Login></Login>;
-  if (tokenBalanceBal < 100000) return <NotEnoughToken
-    tokenBalanceBal={tokenBalanceBal}
-    tokenSymbol={tokenSymbol}
-    tokenName={tokenName}
-  ></NotEnoughToken>
+  // if (tokenBalanceBal < 100000) return <NotEnoughToken
+  //   tokenBalanceBal={tokenBalanceBal}
+  //   tokenSymbol={tokenSymbol}
+  //   tokenName={tokenName}
+  // ></NotEnoughToken>
 
   return (
     <Main address={address} balance={balance}>

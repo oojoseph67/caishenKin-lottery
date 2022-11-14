@@ -21,7 +21,7 @@ function Login({
           {tokenBalanceBal}
           {tokenSymbol}
         </b>
-        .. Only <b>{tokenSymbol}</b>Holders holding <b>100000{tokenSymbol} </b>
+        .. Only <b>{tokenSymbol}</b>Holders holding <b>1,000,000{tokenSymbol} </b>
         can participate in the lottery of the God.{" "}
       </h2>
       <button className="bg-white px-8 py-5 mt-10 rounded-lg shadow-lg font-bold">
