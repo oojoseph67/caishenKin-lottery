@@ -297,7 +297,7 @@ const FinishedRound = ({
                   </div>
                 </div>
                 <div className="my-5">
-                  <div className="flex flex-col sm:flex-row flex-wrap  justify-center  items-center sm:justify-start">
+                  <div className="flex flex-col sm:flex-row flex-wrap text-sm justify-center text-center items-center sm:justify-start">
                     <table className="shadow-lg border-collapse">
                       <thead>
                         <tr>

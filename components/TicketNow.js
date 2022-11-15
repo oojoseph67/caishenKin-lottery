@@ -38,9 +38,11 @@ const TicketNow = ({
     }
   }
 
-  const priceBNB = Number(ethers.utils.formatEther(ticketPrice.toString().slice(0))) * quantity * priceData?.binancecoin.usd
+  const ticketPriceBNB = Number(ethers.utils.formatEther(ticketPrice.toString().slice(0))) * quantity * priceData?.binancecoin.usd
   const ticketNumberQuantity =  Number(ethers.utils.formatEther(ticketPrice.toString())) *
   quantity
+  const poolPriceRaw = ethers.utils.formatEther(pricePool.toString())
+  const poolPriceBNB = poolPriceRaw * priceData?.binancecoin.usd
 
   // console.log("ticket quantitly", quantity)
 
@@ -153,7 +155,7 @@ const TicketNow = ({
                   (
                     {"$"}
                     {
-                     priceBNB.toFixed(2)
+                     ticketPriceBNB.toFixed(2)
                     }{" "}
                   )
                 </span>
@@ -168,8 +170,12 @@ const TicketNow = ({
                   <>No Price Pot Yet</>
                 ) : (
                   <>
-                    {pricePool &&
-                      ethers.utils.formatEther(pricePool.toString()) * priceData?.binancecoin.usd}{" "}
+                    {/* {pricePool &&
+                      ethers.utils.formatEther(pricePool.toString())}{" "}
+                    {""} {nativeTokenSymbol} */}
+                    {
+                      poolPriceRaw.toFixed(3) 
+                    }
                     {""} {nativeTokenSymbol}
                   </>
                 )}
