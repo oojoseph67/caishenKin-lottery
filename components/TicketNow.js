@@ -26,6 +26,17 @@ const TicketNow = ({
     isLoadingExpiration,
   } = useContractRead(contract, "expiration");
 
+  const handleTicketNumber = event => {
+    const limit = 2
+    if(event.target.value > 10){
+      setQuantity("10")
+    } else {
+      setQuantity(event.target.value.slice(0, limit))
+    }
+  }
+
+  console.log("ticket quantitly", quantity)
+
   const nativeTokenDetails = balance.data;
   const nativeTokenBalance = nativeTokenDetails?.displayValue;
   const nativeTokenName = nativeTokenDetails?.name;
@@ -160,7 +171,8 @@ const TicketNow = ({
                   min={1}
                   max={ticketUserCanBuy}
                   value={quantity}
-                  onChange={(e) => setQuantity(Number(e.target.value))}
+                  // onChange={(e) => setQuantity(Number(e.target.value))}
+                  onChange={handleTicketNumber}
                 ></input>
               </p>
               {/* <p className="text-base my-5">20,554 stars</p> */}

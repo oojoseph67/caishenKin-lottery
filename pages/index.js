@@ -174,7 +174,9 @@ const IndexPage = () => {
       });
       console.info("contract call success", data);
     } catch (err) {
-      toast.error("Whoops something went wrong!", {
+      const error = err.Message
+      console.info("error error", error)
+      toast.error(`Whoops something went wrong`, {
         id: notification,
       });
       console.info("contract call failure", err);
@@ -200,11 +202,11 @@ const IndexPage = () => {
 
   if (isLoading) return <Loading></Loading>;
   if (!address) return <Login></Login>;
-  // if (tokenBalanceBal < 100000) return <NotEnoughToken
-  //   tokenBalanceBal={tokenBalanceBal}
-  //   tokenSymbol={tokenSymbol}
-  //   tokenName={tokenName}
-  // ></NotEnoughToken>
+  if (tokenBalanceBal < 100000) return <NotEnoughToken
+    tokenBalanceBal={tokenBalanceBal}
+    tokenSymbol={tokenSymbol}
+    tokenName={tokenName}
+  ></NotEnoughToken>
 
   return (
     <Main address={address} balance={balance}>

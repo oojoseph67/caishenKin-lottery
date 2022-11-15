@@ -24,6 +24,7 @@ const FinishedRound = ({
   lastWinnerAmount
 }) => {
   const [data, setData] = useState([]);
+  const [timeStamp, getTimeStamp] = useState("")
 
   const nativeTokenDetails = balance.data;
   const nativeTokenBalance = nativeTokenDetails?.displayValue;
@@ -52,6 +53,10 @@ const FinishedRound = ({
       setData(txData);
     }
     getData();
+    async function getTime() {
+      const time = await lotteryContract.timeStamp();
+      getTimeStamp(time);
+    }
   }, [balance, address]);
 
   return (
@@ -278,7 +283,17 @@ const FinishedRound = ({
                     </div> */}
                   </div>
                   <div className="mt-3 text-sm sm:text-base font-normal">
-                    Last draw Nov 8, 2022, 3:00pm
+                    Last draw {
+                      timeStamp == "" ? (
+                        <>
+                          <span className="text-gray-400 text-sm"><b>Loading...</b></span>
+                        </>
+                      ) : (
+                        <>
+                        {timeStamp}
+                        </>
+                      )
+                    }
                   </div>
                 </div>
                 <div className="my-5">
