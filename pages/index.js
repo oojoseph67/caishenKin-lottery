@@ -33,7 +33,7 @@ import toast from "react-hot-toast";
 import Marquee from "react-fast-marquee";
 // import AdminControls from "../components/adminControls";
 
-const IndexPage = () => {
+const IndexPage = ({ priceData }) => {
   const [userTickets, setUserTickets] = useState(0);
   const [quantity, setQuantity] = useState(1);
   const [lotteryRound, setLotteryRound] = useState("");
@@ -44,6 +44,8 @@ const IndexPage = () => {
   );
 
   console.log("this is a contract", contract)
+
+  console.log("priceData", priceData?.binancecoin.usd)
 
   // const { tokenContract, isLoading } = useContract(ADDRESS, CONTRACT_ABI);
 
@@ -74,6 +76,8 @@ const IndexPage = () => {
     "RemainingTickets"
   );
   const { data: pricePool } = useContractRead(contract, "CurrentWinningReward");
+
+  console.log("pricePool", pricePool?.displayValue * priceData?.binancecoin.usd);
 
   const { data: ticketPrice } = useContractRead(contract, "ticketPrice");
   const { data: ticketCommission } = useContractRead(
@@ -233,6 +237,7 @@ const IndexPage = () => {
         userTickets={userTickets}
         handleClick={handleClick}
         expiration={expiration}
+        priceData={priceData}
       />
       <FinishedRound
         address={address}
@@ -250,5 +255,17 @@ const IndexPage = () => {
     </Main>
   );
 };
+
+export const getServerSideProps = async () => {
+  const res = await fetch('https://api.coingecko.com/api/v3/simple/price?ids=binancecoin&vs_currencies=usd')
+
+  const priceData = await res.json();
+
+  return {
+    props: {
+      priceData
+    }
+  }
+}
 
 export default IndexPage;

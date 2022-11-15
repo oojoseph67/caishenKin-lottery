@@ -16,6 +16,7 @@ const TicketNow = ({
   remainingTickets,
   userTickets,
   handleClick,
+  priceData,
 }) => {
   const { contract } = useContract(
     process.env.NEXT_PUBLIC_LOTTERY_CONTRACT_ADDRESS
@@ -35,7 +36,7 @@ const TicketNow = ({
     }
   }
 
-  console.log("ticket quantitly", quantity)
+  // console.log("ticket quantitly", quantity)
 
   const nativeTokenDetails = balance.data;
   const nativeTokenBalance = nativeTokenDetails?.displayValue;
@@ -153,12 +154,12 @@ const TicketNow = ({
                 Prize Pot
               </h2>
               <h3 className="text-2xl self-stretch relative tracking-[-0.02em] leading-[40px] font-semibold inline-block text-white sm:text-3xl [background:linear-gradient(95.08deg,_#9f2dfe,_#3bb2f9)] [-webkit-background-clip:text] [-webkit-text-fill-color:transparent]">
-                {!pricePool ? (
+                {pricePool == 0 ? (
                   <>No Price Pot Yet</>
                 ) : (
                   <>
                     {pricePool &&
-                      ethers.utils.formatEther(pricePool.toString())}{" "}
+                      ethers.utils.formatEther(pricePool.toString()) * priceData?.binancecoin.usd}{" "}
                     {""} {nativeTokenSymbol}
                   </>
                 )}
