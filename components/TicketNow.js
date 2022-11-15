@@ -4,6 +4,7 @@ import { useContract, useContractRead } from "@thirdweb-dev/react";
 import Countdown from "react-countdown";
 import { ethers } from "ethers";
 import { shortenBalance } from "../utils/shortenBalance";
+import { shortenAddress } from "../utils/shortenAddress";
 
 const TicketNow = ({
   pricePool,
@@ -17,6 +18,7 @@ const TicketNow = ({
   userTickets,
   handleClick,
   priceData,
+  address,
 }) => {
   const { contract } = useContract(
     process.env.NEXT_PUBLIC_LOTTERY_CONTRACT_ADDRESS
@@ -35,6 +37,10 @@ const TicketNow = ({
       setQuantity(event.target.value.slice(0, limit))
     }
   }
+
+  const priceBNB = Number(ethers.utils.formatEther(ticketPrice.toString().slice(0))) * quantity * priceData?.binancecoin.usd
+  const ticketNumberQuantity =  Number(ethers.utils.formatEther(ticketPrice.toString())) *
+  quantity
 
   // console.log("ticket quantitly", quantity)
 
@@ -142,10 +148,14 @@ const TicketNow = ({
               <div className="items-end ">
                 <span className="text-lg">
                   {/* {shortenBalanceDisplay} {nativeTokenSymbol} */}
-                  {ticketPrice &&
-                    Number(ethers.utils.formatEther(ticketPrice.toString())) *
-                      quantity}{" "}
+                  {ticketNumberQuantity.toFixed(3)}{" "}
                   {nativeTokenSymbol}
+                  (
+                    {"$"}
+                    {
+                     priceBNB.toFixed(2)
+                    }{" "}
+                  )
                 </span>
               </div>
             </div>

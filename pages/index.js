@@ -43,9 +43,9 @@ const IndexPage = ({ priceData }) => {
     process.env.NEXT_PUBLIC_LOTTERY_CONTRACT_ADDRESS
   );
 
-  console.log("this is a contract", contract)
+  // console.log("this is a contract", contract)
 
-  console.log("priceData", priceData?.binancecoin.usd)
+  // console.log("priceData", priceData?.binancecoin.usd)
 
   // const { tokenContract, isLoading } = useContract(ADDRESS, CONTRACT_ABI);
 
@@ -53,10 +53,10 @@ const IndexPage = ({ priceData }) => {
     "0x95ac4ffA46C25dBCe18C53F5EdAf088b53c160D1",
     tokenABI
   );
-  console.log("tokenNNN", tokenContract);
+  // console.log("tokenNNN", tokenContract);
 
   const { data: tokenDetails } = useTokenBalance(tokenContract, address);
-  console.log("token balance", tokenDetails);
+  // console.log("token balance", tokenDetails);
 
   const tokenBalanceBal = tokenDetails?.displayValue
   const tokenSymbol = tokenDetails?.symbol
@@ -64,11 +64,11 @@ const IndexPage = ({ priceData }) => {
   // console.log("token balance bal", tokenBalanceBal);
 
   const ticketUserCanBuy = 10 - userTickets;
-  console.log(`ticket user can buy ${ticketUserCanBuy}`);
+  // console.log(`ticket user can buy ${ticketUserCanBuy}`);
 
   const balance = useBalance();
   // console.log("balancennnn", balance.data)
-  console.log(`here is your balance ${balance.data?.displayValue}`);
+  // console.log(`here is your balance ${balance.data?.displayValue}`);
   const shortenBalanceDisplay = balance.data?.displayValue.slice(0, 5);
 
   const { data: remainingTickets } = useContractRead(
@@ -77,7 +77,7 @@ const IndexPage = ({ priceData }) => {
   );
   const { data: pricePool } = useContractRead(contract, "CurrentWinningReward");
 
-  console.log("pricePool", pricePool?.displayValue * priceData?.binancecoin.usd);
+  // console.log("pricePool", pricePool?.displayValue * priceData?.binancecoin.usd);
 
   const { data: ticketPrice } = useContractRead(contract, "ticketPrice");
   const { data: ticketCommission } = useContractRead(
@@ -112,8 +112,8 @@ const IndexPage = ({ priceData }) => {
   );
 
   const { data: lotteryId } = useContractRead(contract, "lotteryId");
-  console.info("this is the lottery id", lotteryId);
-  console.info(contract);
+  // console.info("this is the lottery id", lotteryId);
+  // console.info(contract);
 
   //   const provider = new ethers.providers.Web3Provider(window.ethereum);
   //   const signer = provider.getSigner();
@@ -155,8 +155,8 @@ const IndexPage = ({ priceData }) => {
     // listenToEvent()
   }, [tickets, address]);
 
-  console.log(`user tickets ${userTickets}`);
-  console.log(`user address ${address}`);
+  // console.log(`user tickets ${userTickets}`);
+  // console.log(`user address ${address}`);
 
   // buying ticket function
   const handleClick = async () => {
@@ -238,6 +238,7 @@ const IndexPage = ({ priceData }) => {
         handleClick={handleClick}
         expiration={expiration}
         priceData={priceData}
+        address={address}
       />
       <FinishedRound
         address={address}

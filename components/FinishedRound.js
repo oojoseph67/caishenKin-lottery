@@ -42,9 +42,9 @@ const FinishedRound = ({
     lotteryABI,
     signer
   );
-  console.log("lotteryContract", lotteryContract);
+  // console.log("lotteryContract", lotteryContract);
 
-  console.log("data", data);
+  // console.log("data", data);
 
   useEffect(() => {
     async function getData() {

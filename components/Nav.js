@@ -19,7 +19,7 @@ const Nav = ({ address, balance }) => {
   const isMismatched = useNetworkMismatch();
   const [, switchNetwork] = useNetwork();
 
-  console.log("navbar address", address);
+  // console.log("navbar address", address);
 
   const nativeTokenDetails = balance.data;
   const nativeTokenBalance = nativeTokenDetails?.displayValue;
@@ -34,7 +34,7 @@ const Nav = ({ address, balance }) => {
   async function networkCheck() {
     if (isMismatched) {
       const { chainId } = await switchNetwork(ChainId.BinanceSmartChainMainnet);
-      console.log("navbar chainId", chainId);
+      // console.log("navbar chainId", chainId);
     }
   }
 
