@@ -23,7 +23,7 @@ const Hero = ({
         <div className="flex flex-col mb-16 sm:text-center sm:mb-0">
           <div className="max-w-xl flex flex-col items-center text-center mb-10 md:mx-auto sm:text-center lg:max-w-2xl md:mb-12">
             <h2 className="mb-6  text-3xl self-stretch relative tracking-[-0.02em] leading-[72px] font-semibold inline-block text-white sm:text-5xl md:mx-auto">
-              CaishenKin Lottery
+              BABYPEPEWAGMI Lottery
             </h2>
             <div className="relative text-2xl leading-[30px] inline-block w-[768px]">
               Win Up To

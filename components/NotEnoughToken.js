@@ -9,10 +9,9 @@ function Login({
     <div className="bg-[#091818] min-h-screen flex flex-col items-center justify-center text-center">
       <img
         className="rounded-full h-56 w-56 mb-10"
-        src="/logo/caishenKinBig.png"
-        alt="image"
-      ></img>
-      <h1 className="text-6xl text-white font-bold">CaishenKin Lottery</h1>
+        src="/logo/babypepe-dice.png"
+        alt="image"></img>
+      <h1 className="text-6xl text-white font-bold">BABYPEPEWAGMI Lottery</h1>
       <br></br>
       <h2 className="text-white">
         {" "}
@@ -21,7 +20,8 @@ function Login({
           {tokenBalanceBal}
           {tokenSymbol}
         </b>
-        .. Only <b>{tokenSymbol}</b>Holders holding <b>1,000,000{tokenSymbol} </b>
+        .. Only <b>{tokenSymbol}</b>Holders holding{" "}
+        <b>1,000,000{tokenSymbol} </b>
         can participate in the lottery of the God.{" "}
       </h2>
       <button className="bg-white px-8 py-5 mt-10 rounded-lg shadow-lg font-bold">
